@@ -58,7 +58,7 @@
             document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
 
             //check wheather the player has won the game, if not change the activePlayer to next player
-            if (scores[activePlayer] >= 20) { //the player has won
+            if (scores[activePlayer] >= 100) { //the player has won
                 //change the name of the activePlayer to WINNER
                 document.querySelector(`#name-${activePlayer}`).textContent = 'Winner!';
                 //hide the dice
