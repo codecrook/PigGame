@@ -32,7 +32,7 @@
 
             //code to roll the dice
             dice.style.display = 'block';
-            dice.src = `./../img/dice-${diceValue}.png`;
+            dice.src = `./img/dice-${diceValue}.png`;
 
             //code to update the current score of player UNTILL he/she rolls an 1
 
