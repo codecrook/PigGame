@@ -22,17 +22,7 @@
     let scores, roundScore, activePlayer, gamePlaying;
 
     //initiall conditions
-    scores = [0, 0];
-    roundScore = 0;
-    activePlayer = 0;
-
-    firstPlayerTotalScore.textContent = '0';
-    secondPlayerTotalScore.textContent = '0';
-
-    firstPlayerCurrentScore.textContent = '0';
-    secondPlayerCurrentScore.textContent = '0';
-
-    dice.style.display = 'none';
+    initGame();
 
     //adding functionality for roll button
     rollButton.addEventListener('click', (e) => {
@@ -78,6 +68,9 @@
             changePlayer();
         }
     });
+
+    //adding functionality for new game button
+    newGameButton.addEventListener('click', initGame);
     
     /*function to change activePlayer
      *toggles the currently activePlayer
@@ -100,4 +93,32 @@
             dice.style.display = 'none';
     }
 
+    /*function to initialize the game
+     *initializes all the scores to 0
+     *shows visual changes to UI making it display all the initial conditions
+    */
+    function initGame() {
+        scores = [0, 0];
+        roundScore = 0;
+        activePlayer = 0;
+    
+        firstPlayerTotalScore.textContent = '0';
+        secondPlayerTotalScore.textContent = '0';
+    
+        firstPlayerCurrentScore.textContent = '0';
+        secondPlayerCurrentScore.textContent = '0';
+
+        firstPlayerName.textContent = 'Player 1';
+        secondPlayerName.textContent = 'Player 2';
+
+        firstPlayerPanel.classList.remove('winner');
+        secondPlayerPanel.classList.remove('winner');
+
+        firstPlayerPanel.classList.remove('active');
+        secondPlayerPanel.classList.remove('active');
+
+        firstPlayerPanel.classList.add('active');
+    
+        dice.style.display = 'none';
+    }
 })();
