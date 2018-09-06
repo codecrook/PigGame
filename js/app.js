@@ -34,6 +34,7 @@
 
     dice.style.display = 'none';
 
+    //adding functionality for roll button
     rollButton.addEventListener('click', (e) => {
         let diceValue = Math.floor(Math.random() * 6) + 1;
 
@@ -50,7 +51,41 @@
         } else {
             //if the current players rolls 1
             //move to next player
-            activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; //toggle the activePlayer
+            changePlayer();
+        }
+    });
+
+    //adding functionality for hold button
+    holdButton.addEventListener('click', (e) => {
+        //add roundScore of currently activePlayer to its total score
+        scores[activePlayer] += roundScore;
+
+        //display the score on UI
+        document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
+
+        //check wheather the player has won the game, if not change the activePlayer to next player
+        if (scores[activePlayer] >= 20) { //the player has won
+            //change the name of the activePlayer to WINNER
+            document.querySelector(`#name-${activePlayer}`).textContent = 'Winner!';
+            //hide the dice
+            dice.style.display = 'none';
+            //add the 'winner' class to activePlayer's pannnel to make visual change
+            document.querySelector(`.player-${activePlayer}-panel`).classList.add('winner');
+            //remove the 'active' class
+            document.querySelector(`.player-${activePlayer}-panel`).classList.remove('active');
+        } else {
+            //change the currently activePlayer to next player
+            changePlayer();
+        }
+    });
+    
+    /*function to change activePlayer
+     *toggles the currently activePlayer
+     *initiaize the roundScore to 0 for current player
+     *makes respective visual changes
+    */
+    function changePlayer() {
+        activePlayer === 0 ? activePlayer = 1 : activePlayer = 0; //toggle the activePlayer
             roundScore = 0; //initializes the round score to 0 for current player
 
             //display the initialized current score as 0 for both the players, on the UI
@@ -63,7 +98,6 @@
 
             //hide the dice giving the current player a blank place to roll on :P
             dice.style.display = 'none';
-        }
-    });
+    }
 
 })();
