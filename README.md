@@ -22,4 +22,4 @@ Clone or download the project and open `index.html` in your browser.
 
 -OR-
 
-[click here](https:/codecrook.github.io/PigGame) for a live demo.
+[click here](https://codecrook.github.io/PigGame/) for a live demo.
