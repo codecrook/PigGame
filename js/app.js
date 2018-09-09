@@ -19,7 +19,7 @@
 
     const dice = document.querySelector('.dice');
 
-    let scores, roundScore, activePlayer, gamePlaying;
+    let scores, roundScore, activePlayer, gamePlaying, lastDiceValue;
 
     //initiall conditions
     initGame();
@@ -34,9 +34,15 @@
             dice.style.display = 'block';
             dice.src = `./img/dice-${diceValue}.png`;
 
-            //code to update the current score of player UNTILL he/she rolls an 1
-
-            if (diceValue !== 1) {
+            //code to update the current score of player UNTILL he/she rolls an 1 or rolls two 6s in a row
+            if (diceValue === 6 && lastDiceValue === 6) {
+                //player looses all his/her scores
+                scores[activePlayer] = 0;
+                //update the change on UI
+                document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
+                //now it's next player's turn!
+                changePlayer();
+            } else if (diceValue !== 1) {
                 //add score for current player
                 roundScore += diceValue;
                 document.querySelector(`#current-${activePlayer}`).textContent = roundScore; //display changes on the page
@@ -45,6 +51,8 @@
                 //move to next player
                 changePlayer();
             }
+
+            lastDiceValue = diceValue;
         }
     });
 
