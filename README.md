@@ -13,7 +13,7 @@ This a simple implementaton of **Pig Game**, details for which cam be found [her
 * Player looses all of his/her global score if he/she rolls two 6s in a row
 * BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn
 * The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
-* The first player to reach 100 points on GLOBAL score wins the game
+* The first player to reach the defined final score points on GLOBAL score wins the game (you can set different winning score according to your convinience)
 
 
 ## How to run

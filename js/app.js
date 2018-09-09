@@ -17,6 +17,8 @@
     const firstPlayerTotalScore = document.getElementById('score-0');
     const secondPlayerTotalScore = document.getElementById('score-1');
 
+    const finalScoreSetter = document.querySelector('.final-score');
+
     const dice = document.querySelector('.dice');
 
     let scores, roundScore, activePlayer, gamePlaying, lastDiceValue;
@@ -65,8 +67,18 @@
             //display the score on UI
             document.querySelector(`#score-${activePlayer}`).textContent = scores[activePlayer];
 
+            //code to set final score as user input value
+            let enteredFinalScore = finalScoreSetter.value;
+            let finalScore;
+
+            if (enteredFinalScore) {
+                finalScore = enteredFinalScore;
+            } else {
+                finalScore = 0;
+            }
+
             //check wheather the player has won the game, if not change the activePlayer to next player
-            if (scores[activePlayer] >= 100) { //the player has won
+            if (scores[activePlayer] >= finalScore) { //the player has won
                 //change the name of the activePlayer to WINNER
                 document.querySelector(`#name-${activePlayer}`).textContent = 'Winner!';
                 //hide the dice
